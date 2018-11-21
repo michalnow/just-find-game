@@ -1,18 +1,18 @@
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-import Home from './src/screens/Home'
+import LoginScreen from './src/screens/LoginScreen'
 import secondScreen from './src/screens/secondScreen'
 
 const MainNavigator = createStackNavigator(
   {
-    Home: {
-      screen: Home
+    LoginScreen: {
+      screen: LoginScreen
     },
     SecondScreen: {
       screen: secondScreen
     },
   },
   {
-    header: null
+    headerMode: 'screen'
   },
   {
     initialRouteName: 'Home'
