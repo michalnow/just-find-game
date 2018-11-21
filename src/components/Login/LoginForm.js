@@ -8,9 +8,13 @@ import {
     StatusBar
 } from 'react-native';
 
+
+
 export default class LoginForm extends React.Component{
+    constructor(props){
+        super(props)
+    }
     render(){
-       // const {navigate} = this.props.navigation;
         return(
             <View style={StyleSheet.container}>
                 <TextInput 
@@ -34,7 +38,8 @@ export default class LoginForm extends React.Component{
                 />
 
                  <TouchableOpacity
-                    style={styles.buttonContainer}
+                    style={styles.buttonContainer} 
+                    onPress={() => this.props.navigation.navigate('Home')}
                 >
                     <Text style={styles.buttonText}> Login </Text>
                 </TouchableOpacity>

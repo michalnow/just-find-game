@@ -3,7 +3,9 @@ import {
     View, 
     StyleSheet, 
     Image,
-    StatusBar
+    StatusBar,
+    Linking,
+    Text,
 } from 'react-native'; 
 import LoginForm from './LoginForm'
 
@@ -13,7 +15,7 @@ export default class Login extends React.Component{
       <View style={styles.container}>
       <StatusBar 
          backgroundColor='#74b9ff'
-        barStyle='light-content'
+         barStyle='light-content'
        />
         <View style={styles.logoContainer}>
             <Image 
@@ -22,7 +24,13 @@ export default class Login extends React.Component{
         </View>
         <View style={styles.formContainer}>
           <LoginForm/>
-        </View> 
+        </View>
+        <View style={styles.logoContainer}>
+          <Text style={{color: 'blue' ,textAlign: 'center'}}
+              onPress={() => Linking.openURL('http://google.com')}>
+             Dont't have account ? Click here to registry.
+          </Text>
+        </View>
       </View>
     );
   }  
@@ -36,7 +44,7 @@ const styles = StyleSheet.create({
     },
     logoContainer: {
         alignItems: 'center',
-        flexGrow: 1,
+        flexGrow: 2,
         justifyContent: 'center'
     },
     logo:{
