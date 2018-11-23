@@ -13,7 +13,13 @@ import {
 export default class LoginForm extends React.Component{
     constructor(props){
         super(props)
+        this.onDone = this.onDone.bind(this)
     }
+
+    onDone() {
+        this.props.navigation.navigate('Home')
+    }
+
     render(){
         return(
             <View style={StyleSheet.container}>
@@ -39,7 +45,7 @@ export default class LoginForm extends React.Component{
 
                  <TouchableOpacity
                     style={styles.buttonContainer} 
-                    onPress={() => this.props.navigation.navigate('Home')}
+                    onPress={onDone=this.onDone.bind(this)}
                 >
                     <Text style={styles.buttonText}> Login </Text>
                 </TouchableOpacity>
