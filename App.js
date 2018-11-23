@@ -4,12 +4,12 @@ import HomeScreen from './src/screens/HomeScreen'
 
 const MainNavigator = createStackNavigator(
   {
-    Login: {
-      screen: LoginScreen
-    },
     Home: {
       screen: HomeScreen
     },
+    Login: {
+      screen: LoginScreen
+    }
   },
   {
     headerMode: 'screen'
