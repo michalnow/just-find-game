@@ -12,7 +12,9 @@ export default class CloseEventFootball extends React.Component{
     render(){
         return(
             <View style={styles.container}>
-
+                <Image style={styles.image}
+                source={require('../../images/football.jpg')} /> 
+                
             </View>      
         );
     }
@@ -23,6 +25,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    image:{
+        width: 200,
+        height: 300,
+        opacity: .1
     }
 
 })
