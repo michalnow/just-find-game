@@ -3,19 +3,22 @@ import {
     View, 
     StyleSheet, 
     ScrollView,
-    Text
+    Text,
 } from 'react-native';
 
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
+import {createMaterialTopTabNavigator} from 'react-navigation'
+
 import SettingsScreen from './SettingsScreen'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 
 import CloseEventFootball from '../components/CloseEvent/CloseEventFootball'
 
+
 class HomeScreen extends React.Component{
     static navigationOptions = {
-        header: null,
-        title: 'Home'
+        header: null
       }
     render() {
         return (
@@ -31,18 +34,47 @@ class HomeScreen extends React.Component{
       }
 }
 
-export default createMaterialBottomTabNavigator({
+export default createMaterialTopTabNavigator({
     Home: {
-        screen: HomeScreen
+        screen: HomeScreen,
+        navigationOptions: {
+            header: null,
+            tabBarLabel: 'Home',
+            tabBarIcon:({tintColor}) => (
+                <Icon name="ios-home" color={tintColor} size={24} />
+            )
+        }
     },
     Settings: {
-        screen: SettingsScreen
+        screen: SettingsScreen,
+        navigationOptions: {
+            header: null,
+            tabBarLabel: 'Settings',
+            tabBarIcon:({tintColor}) => (
+                <Icon name="ios-settings" color={tintColor} size={24} />
+            )
+        }
     }    
 },
 {
     initialRouteName: 'Home',
-    order:['Settings',"Home"],
-    activeTintColor: '#74b9ff'
+    activeTintColor: '#74b9ff',
+    tabBarPosition: 'bottom',
+    shifting: true,
+    tabBarOptions: {
+        activeTintColor: '#74b9ff',
+        inactiveTintColor: 'transparent',
+        style: {
+            backgroundColor: 'transparent'
+        },
+        indicatorStyle: {
+            height: 0
+        },
+        showIcon: true
+    }
+
+  
+
 })
 
 const styles = StyleSheet.create({
