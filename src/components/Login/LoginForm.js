@@ -1,24 +1,13 @@
 import React from 'react';
 import { 
     View, 
-    Text,
     StyleSheet, 
-    TouchableOpacity,
-    TextInput,
-    StatusBar
+    TextInput
 } from 'react-native';
 
 
 
 export default class LoginForm extends React.Component{
-    constructor(props){
-        super(props)
-        this.onDone = this.onDone.bind(this)
-    }
-
-    onDone() {
-        this.props.navigation.navigate('Home')
-    }
 
     render(){
         return(
@@ -42,13 +31,6 @@ export default class LoginForm extends React.Component{
                     style={styles.input}
                     onChangeText={(password) => this.setState({password})}
                 />
-
-                 <TouchableOpacity
-                    style={styles.buttonContainer} 
-                    onPress={onDone=this.onDone.bind(this)}
-                >
-                    <Text style={styles.buttonText}> Login </Text>
-                </TouchableOpacity>
             </View>
         )
     }
@@ -66,20 +48,5 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         color: 'black',
         paddingHorizontal: 10,
-    },
-    buttonContainer: {
-        backgroundColor: '#74b9ff',
-        paddingVertical: 15,
-        marginBottom: 20,
-        marginLeft: 50,
-        marginRight: 50,
-        borderWidth: 0,
-        borderColor: 'transparent',
-        borderRadius: 12
-    },
-    buttonText: {
-        textAlign: 'center',
-        color: 'black',
-        fontSize: 20
     }
 })
