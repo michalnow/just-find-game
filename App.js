@@ -7,10 +7,16 @@ import HomeScreen from './src/screens/HomeScreen'
 const MainNavigator = createStackNavigator(
   {
     Home: {
-      screen: HomeScreen
+      screen: HomeScreen,
+      navigationOptions: {
+        header: null
+}
     },
     Login: {
-      screen: LoginScreen
+      screen: LoginScreen,
+      navigationOptions: {
+        header: null
+}
     }
   },
   {
