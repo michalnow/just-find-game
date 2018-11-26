@@ -9,8 +9,11 @@ import {
 
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
 import {createMaterialTopTabNavigator} from 'react-navigation'
-
-import SettingsScreen from './SettingsScreen'
+import {createDrawerNavigator} from 'react-navigation'
+import ProfileScreen from './ProfileScreen'
+import SearchScreen from './SearchScreen'
+import YourMatchesScreen from './YourMatchesScreen'
+import LoginScreen from './LoginScreen'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 
@@ -23,7 +26,7 @@ class HomeScreen extends React.Component{
       }
     render() {
         return (
-          <View style={styles.container}>
+        <View style={styles.container}>
             <StatusBar 
                 backgroundColor='#74b9ff'
                 barStyle='light-content'
@@ -34,7 +37,7 @@ class HomeScreen extends React.Component{
             <View style={styles.bottomContainer}>
                   
             </View>              
-          </View>
+        </View>
         );
       }
 }
@@ -44,22 +47,42 @@ export default createMaterialTopTabNavigator({
         screen: HomeScreen,
         navigationOptions: {
             header: null,
-            tabBarLabel: 'Home',
+            tabBarLabel: <Text style={{ fontSize: 13}}>Home</Text>,
             tabBarIcon:({tintColor}) => (
                 <Icon name="md-home" color={tintColor} size={20} />
             )
         }
     },
-    Settings: {
-        screen: SettingsScreen,
+    Search: {
+        screen: SearchScreen,
         navigationOptions: {
             header: null,
-            tabBarLabel: 'Settings',
+            tabBarLabel: <Text style={{ fontSize: 13}}>Search</Text>,
             tabBarIcon:({tintColor}) => (
-                <Icon name="md-settings" color={tintColor} size={20} />
+                <Icon name="md-search" color={tintColor} size={20} />
             )
         }
-    }    
+    },
+    YourMatches: {
+        screen: YourMatchesScreen,
+        navigationOptions: {
+            header: null,
+            tabBarLabel: <Text style={{ fontSize: 13}}>Matches</Text>,
+            tabBarIcon:({tintColor}) => (
+                <Icon name="md-football" color={tintColor} size={20} />
+            )
+        }
+    },
+    Profile: {
+        screen: ProfileScreen,
+        navigationOptions: {
+            header: null,
+            tabBarLabel: <Text style={{ fontSize: 13}}>Profile</Text>,
+            tabBarIcon:({tintColor}) => (
+                <Icon name="md-contact" color={tintColor} size={20} />
+            )
+        }
+    }
 },
 {
     initialRouteName: 'Home',
