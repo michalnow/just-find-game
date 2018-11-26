@@ -4,6 +4,7 @@ import {
     StyleSheet, 
     ScrollView,
     Text,
+    StatusBar
 } from 'react-native';
 
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
@@ -23,6 +24,10 @@ class HomeScreen extends React.Component{
     render() {
         return (
           <View style={styles.container}>
+            <StatusBar 
+                backgroundColor='#74b9ff'
+                barStyle='light-content'
+            />
             <ScrollView contentContainerStyle={{justifyContent : 'center'}} style={styles.contentContainer}>
                    <Text>HOME</Text>
             </ScrollView>
@@ -41,7 +46,7 @@ export default createMaterialTopTabNavigator({
             header: null,
             tabBarLabel: 'Home',
             tabBarIcon:({tintColor}) => (
-                <Icon name="ios-home" color={tintColor} size={24} />
+                <Icon name="md-home" color={tintColor} size={20} />
             )
         }
     },
@@ -51,7 +56,7 @@ export default createMaterialTopTabNavigator({
             header: null,
             tabBarLabel: 'Settings',
             tabBarIcon:({tintColor}) => (
-                <Icon name="ios-settings" color={tintColor} size={24} />
+                <Icon name="md-settings" color={tintColor} size={20} />
             )
         }
     }    
