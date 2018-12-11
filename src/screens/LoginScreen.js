@@ -1,6 +1,5 @@
 import React from "react";
 import LoginForm from "../components/Login/LoginForm";
-import App from "../../App";
 import {
   View,
   StyleSheet,
@@ -35,7 +34,7 @@ export default class LoginScreen extends React.Component {
         <View style={styles.logoContainer}>
           <Text
             style={{ color: "blue", textAlign: "center" }}
-            onPress={() => Linking.openURL("http://google.com")}
+            onPress={() => navigate("Registration")}
           >
             Dont't have account ? Click here to registry.
           </Text>
