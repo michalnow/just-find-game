@@ -6,6 +6,7 @@ import ProfileScreen from "./ProfileScreen";
 import SearchScreen from "./SearchScreen";
 import YourMatchesScreen from "./YourMatchesScreen";
 import Icon from "react-native-vector-icons/Ionicons";
+import CloseEventFootball from "../components/CloseEvent/CloseEventFootball";
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -16,10 +17,22 @@ class HomeScreen extends React.Component {
       <View style={styles.container}>
         <StatusBar backgroundColor="#74b9ff" barStyle="light-content" />
         <ScrollView
-          contentContainerStyle={{ justifyContent: "center" }}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            justifyContent: "center"
+          }}
           style={styles.contentContainer}
         >
-          <Text>HOME</Text>
+          <CloseEventFootball />
+          <CloseEventFootball />
+          <CloseEventFootball />
+          <CloseEventFootball />
+          <CloseEventFootball />
+          <CloseEventFootball />
+          <CloseEventFootball />
+          <CloseEventFootball />
+          <CloseEventFootball />
+          <CloseEventFootball />
         </ScrollView>
         <View style={styles.bottomContainer} />
       </View>
