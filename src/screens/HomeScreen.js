@@ -1,5 +1,12 @@
 import React from "react";
-import { View, StyleSheet, ScrollView, Text, StatusBar } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Text,
+  StatusBar,
+  TouchableOpacity
+} from "react-native";
 
 import { createMaterialTopTabNavigator } from "react-navigation";
 import ProfileScreen from "./ProfileScreen";
@@ -13,28 +20,87 @@ class HomeScreen extends React.Component {
     header: null
   };
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#74b9ff" barStyle="light-content" />
+
         <ScrollView
           showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
-            justifyContent: "center"
+            justifyContent: "center",
+            alignItems: "center"
           }}
           style={styles.contentContainer}
         >
-          <CloseEventFootball />
-          <CloseEventFootball />
-          <CloseEventFootball />
-          <CloseEventFootball />
-          <CloseEventFootball />
-          <CloseEventFootball />
-          <CloseEventFootball />
-          <CloseEventFootball />
-          <CloseEventFootball />
-          <CloseEventFootball />
+          <Text style={styles.text}>Football</Text>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            contentContainerStyle={{
+              justifyContent: "center"
+            }}
+            style={styles.contentContainer}
+          >
+            <TouchableOpacity onPress={() => navigate("Event")}>
+              <CloseEventFootball />
+            </TouchableOpacity>
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+          </ScrollView>
+          <Text style={styles.text}>Volleyball</Text>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            contentContainerStyle={{
+              justifyContent: "center"
+            }}
+            style={styles.contentContainer}
+          >
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+          </ScrollView>
+          <Text style={styles.text}>Basketball</Text>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            contentContainerStyle={{
+              justifyContent: "center"
+            }}
+            style={styles.contentContainerBot}
+          >
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+            <CloseEventFootball />
+          </ScrollView>
         </ScrollView>
-        <View style={styles.bottomContainer} />
+        {/* <View style={styles.bottomContainer} /> */}
       </View>
     );
   }
@@ -110,10 +176,19 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   contentContainer: {
-    paddingVertical: 20
+    paddingVertical: 20,
+    marginBottom: 15
+  },
+  contentContainerBot: {
+    paddingVertical: 20,
+    marginBottom: 35
   },
   bottomContainer: {
     width: 200,
-    height: 100
+    height: 80
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: "bold"
   }
 });
