@@ -3,6 +3,8 @@ import LoginScreen from "./src/screens/LoginScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import React from "react";
 import RegistrationScreen from "./src/screens/RegistrationScreen";
+import EventScreen from "./src/screens/EventScreen";
+import YourMatchesScreen from "./src/screens/YourMatchesScreen";
 
 export default class App extends React.Component {
   render() {
@@ -25,6 +27,12 @@ const AppStackNavigator = createStackNavigator(
     },
     Registration: {
       screen: RegistrationScreen,
+      navigationOptions: {
+        header: null
+      }
+    },
+    Event: {
+      screen: EventScreen,
       navigationOptions: {
         header: null
       }
