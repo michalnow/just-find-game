@@ -1,14 +1,19 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, ImageBackground, Text } from "react-native";
 
 export default class CloseEventFootball extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image
+        <ImageBackground
           style={styles.image}
           source={require("../../images/football1.png")}
-        />
+        >
+          <Text style={styles.text}>Missing: 2</Text>
+          <Text style={styles.text}>Level: medium</Text>
+          <Text style={styles.text}>6 pm. 24.01</Text>
+          <Text style={styles.text}>os.Kurdwanów 72 Orlik</Text>
+        </ImageBackground>
       </View>
     );
   }
@@ -19,12 +24,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 15,
-    marginBottom: 15
+    marginTop: 0,
+    marginBottom: 0
   },
   image: {
     width: 300,
-    height: 210,
-    opacity: 0.4
+    height: 200,
+    opacity: 0.8,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: "bold"
   }
 });
