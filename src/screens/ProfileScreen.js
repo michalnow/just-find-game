@@ -19,6 +19,7 @@ export default class ProfileScreen extends React.Component {
           <Text style={styles.text}>1999.12.24</Text>
           <Text style={styles.text}>Football</Text>
           <Text style={styles.text}>test@test.com</Text>
+          <Text style={styles.text}>Remind about events: yes</Text>
         </View>
         <View style={styles.formContainer}>
           <TouchableOpacity
