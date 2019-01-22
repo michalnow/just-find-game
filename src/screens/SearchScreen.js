@@ -38,6 +38,30 @@ export default class SearchScreen extends Component {
           level: "easy",
           dateH: "4pm 24.01",
           adress: "os. Na wzgórzach 32"
+        },
+        {
+          missing: "3",
+          level: "hard",
+          dateH: "10pm 25.01",
+          adress: "os. Na Stoku 8"
+        },
+        {
+          missing: "1",
+          level: "Pro",
+          dateH: "4pm 24.01",
+          adress: "os. Wielicka 32"
+        },
+        {
+          missing: "8",
+          level: "medium",
+          dateH: "4pm 25.01",
+          adress: "os. Złotego wieku 32"
+        },
+        {
+          missing: "10",
+          level: "easy",
+          dateH: "10m 24.01",
+          adress: "os. Pilotów 32"
         }
       ],
       error: null
@@ -73,6 +97,30 @@ export default class SearchScreen extends Component {
         level: "easy",
         dateH: "4pm 24.01",
         adress: "os. Na wzgórzach 32"
+      },
+      {
+        missing: "3",
+        level: "hard",
+        dateH: "10pm 25.01",
+        adress: "os. Na Stoku 8"
+      },
+      {
+        missing: "1",
+        level: "Pro",
+        dateH: "4pm 24.01",
+        adress: "os. Wielicka 32"
+      },
+      {
+        missing: "8",
+        level: "medium",
+        dateH: "4pm 25.01",
+        adress: "os. Złotego wieku 32"
+      },
+      {
+        missing: "10",
+        level: "easy",
+        dateH: "10m 24.01",
+        adress: "os. Pilotów 32"
       }
     ];
   }
@@ -130,7 +178,7 @@ export default class SearchScreen extends Component {
   renderHeader = () => {
     return (
       <SearchBar
-        placeholder="Type Here..."
+        placeholder="Search"
         lightTheme
         round
         onChangeText={text => this.searchFilterFunction(text)}
@@ -152,10 +200,8 @@ export default class SearchScreen extends Component {
           renderItem={({ item }) => (
             <ListItem
               roundAvatar
-              title={`missing: ${item.missing} <place: ${item.adress} when: ${
-                item.dateH
-              }`}
-              subtitle={`diffculty: ${item.level}`}
+              title={`${item.adress}, when: ${item.dateH}`}
+              subtitle={`diffculty: ${item.level}, missing: ${item.missing}`}
               avatar={av}
               containerStyle={{ borderBottomWidth: 0 }}
             />
