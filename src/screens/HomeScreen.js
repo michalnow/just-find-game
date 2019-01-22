@@ -14,6 +14,7 @@ import SearchScreen from "./SearchScreen";
 import YourMatchesScreen from "./YourMatchesScreen";
 import Icon from "react-native-vector-icons/Ionicons";
 import CloseEventFootball from "../components/CloseEvent/CloseEventFootball";
+import CloseEventVolleyball from "../components/CloseEvent/CloseEventVolleyball";
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -67,16 +68,14 @@ class HomeScreen extends React.Component {
             }}
             style={styles.contentContainer}
           >
-            <CloseEventFootball />
-            <CloseEventFootball />
-            <CloseEventFootball />
-            <CloseEventFootball />
-            <CloseEventFootball />
-            <CloseEventFootball />
-            <CloseEventFootball />
-            <CloseEventFootball />
-            <CloseEventFootball />
-            <CloseEventFootball />
+            <CloseEventVolleyball />
+            <CloseEventVolleyball />
+            <CloseEventVolleyball />
+            <CloseEventVolleyball />
+            <CloseEventVolleyball />
+            <CloseEventVolleyball />
+            <CloseEventVolleyball />
+            <CloseEventVolleyball />
           </ScrollView>
           <Text style={styles.text}>Basketball</Text>
           <ScrollView
@@ -100,6 +99,12 @@ class HomeScreen extends React.Component {
             <CloseEventFootball />
           </ScrollView>
         </ScrollView>
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={() => navigate("Home")}
+        >
+          <Text style={styles.buttonText}> Add </Text>
+        </TouchableOpacity>
         {/* <View style={styles.bottomContainer} /> */}
       </View>
     );
@@ -176,8 +181,8 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   contentContainer: {
-    paddingVertical: 20,
-    marginBottom: 15
+    paddingVertical: 10,
+    marginBottom: 10
   },
   contentContainerBot: {
     paddingVertical: 20,
@@ -190,5 +195,21 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: "bold"
+  },
+  buttonContainer: {
+    backgroundColor: "#74b9ff",
+    paddingVertical: 15,
+    marginBottom: 5,
+    marginLeft: 50,
+    marginRight: 50,
+    borderWidth: 0,
+    borderColor: "transparent",
+    borderRadius: 12,
+    padding: 90
+  },
+  buttonText: {
+    textAlign: "center",
+    color: "black",
+    fontSize: 20
   }
 });
