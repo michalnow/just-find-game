@@ -1,7 +1,13 @@
 import React from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import { View, StyleSheet, TextInput, Text } from "react-native";
+import { CheckBox } from "react-native-elements";
 
 export default class RegisterForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { checked: false };
+  }
+
   render() {
     return (
       <View style={StyleSheet.container}>
@@ -52,6 +58,20 @@ export default class RegisterForm extends React.Component {
           style={styles.input}
           onChangeText={repeatpassword => this.setState({ repeatpassword })}
         />
+
+        <CheckBox
+          center
+          title="Remind about events"
+          checkedIcon="dot-circle-o"
+          uncheckedIcon="circle-o"
+          onPress={() =>
+            this.setState({
+              checked: !this.state.checked
+            })
+          }
+          checked={this.state.checked}
+          style={{ marginBottom: 10, fontSize: 20 }}
+        />
       </View>
     );
   }
@@ -69,5 +89,14 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     color: "black",
     paddingHorizontal: 10
+  },
+  textIn: {
+    fontSize: 20,
+    textAlign: "center",
+    backgroundColor: "rgba(255,255,255,0.2)",
+    marginBottom: 15,
+    color: "black",
+    paddingHorizontal: 10,
+    opacity: 0.3
   }
 });
