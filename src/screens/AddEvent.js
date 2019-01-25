@@ -17,20 +17,37 @@ const missNum = t.refinement(t.Number, n => {
 
 const Event = t.struct({
   address: t.String,
-  when: t.String,
+  date: t.Date,
+  hour: t.Date,
   type: t.String,
   difficulty: t.String,
   missing: missNum,
   description: t.maybe(t.String)
 });
 
+const myFormatFunction = format => date => (format, date);
+
+const dateFormat = "dd-MM-yyyy";
+const timeFormat = "hh:mm";
+
 const options = {
   fields: {
     address: {
       error: "Without adress how you can find people to play ?"
     },
-    when: {
-      error: "When others should come ?"
+    date: {
+      config: {
+        format: myFormatFunction(dateFormat)
+      },
+      mode: "date",
+      error: "provide date of the event"
+    },
+    hour: {
+      config: {
+        format: myFormatFunction(timeFormat)
+      },
+      mode: "time",
+      error: "provide time when the event starts ?"
     },
     type: {
       error:
