@@ -1,173 +1,45 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+  StyleSheet
+} from "react-native";
 import { List, ListItem, SearchBar } from "react-native-elements";
 import av from "../images/av.jpg";
+import axios from "axios";
 
 export default class SearchScreen extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       loading: false,
-      data: [
-        {
-          missing: "2",
-          level: "medium",
-          dateH: "6pm 24.01",
-          adress: "os.Kurdwanow 24"
-        },
-        {
-          missing: "5",
-          level: "easy",
-          dateH: "8pm 26.01",
-          adress: "ul. Narzymskiego 10"
-        },
-        {
-          missing: "1",
-          level: "hard",
-          dateH: "6pm 22.01",
-          adress: "os.Kazimierzowskie 30"
-        },
-        {
-          missing: "3",
-          level: "Pro",
-          dateH: "8pm 27.01",
-          adress: "os.Dywizjonu 303"
-        },
-        {
-          missing: "6",
-          level: "easy",
-          dateH: "4pm 24.01",
-          adress: "os. Na wzgórzach 32"
-        },
-        {
-          missing: "3",
-          level: "hard",
-          dateH: "10pm 25.01",
-          adress: "os. Na Stoku 8"
-        },
-        {
-          missing: "1",
-          level: "Pro",
-          dateH: "4pm 24.01",
-          adress: "os. Wielicka 32"
-        },
-        {
-          missing: "8",
-          level: "medium",
-          dateH: "4pm 25.01",
-          adress: "os. Złotego wieku 32"
-        },
-        {
-          missing: "10",
-          level: "easy",
-          dateH: "10m 24.01",
-          adress: "os. Pilotów 32"
-        }
-      ],
+      events: [],
       error: null
     };
 
-    this.arrayholder = [
-      {
-        missing: "2",
-        level: "medium",
-        dateH: "6pm 24.01",
-        adress: "os.Kurdwanow 24"
-      },
-      {
-        missing: "5",
-        level: "easy",
-        dateH: "8pm 26.01",
-        adress: "ul. Narzymskiego 10"
-      },
-      {
-        missing: "1",
-        level: "hard",
-        dateH: "6pm 22.01",
-        adress: "os.Kazimierzowskie 30"
-      },
-      {
-        missing: "3",
-        level: "Pro",
-        dateH: "8pm 27.01",
-        adress: "os.Dywizjonu 303"
-      },
-      {
-        missing: "6",
-        level: "easy",
-        dateH: "4pm 24.01",
-        adress: "os. Na wzgórzach 32"
-      },
-      {
-        missing: "3",
-        level: "hard",
-        dateH: "10pm 25.01",
-        adress: "os. Na Stoku 8"
-      },
-      {
-        missing: "1",
-        level: "Pro",
-        dateH: "4pm 24.01",
-        adress: "os. Wielicka 32"
-      },
-      {
-        missing: "8",
-        level: "medium",
-        dateH: "4pm 25.01",
-        adress: "os. Złotego wieku 32"
-      },
-      {
-        missing: "10",
-        level: "easy",
-        dateH: "10m 24.01",
-        adress: "os. Pilotów 32"
-      }
-    ];
+    this.arrayholder = [];
   }
 
-  /* componentDidMount() {
-    this.makeRemoteRequest();
-  }
-
-  makeRemoteRequest = () => {
-    const url = `https://randomuser.me/api/?&results=20`;
+  componentDidMount() {
     this.setState({ loading: true });
+    axios.get("http://192.168.0.171:8080/api/event/all").then(res => {
+      const events = res.data;
+      this.setState({ loading: false, events });
 
-    fetch(url)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res.results,
-          error: res.error || null,
-          loading: false
-        });
-
-        this.arrayholder = res.results;
-      })
-      .catch(error => {
-        this.setState({ error, loading: false });
-      });
-  };*/
-
-  searchFilterFunction = text => {
-    const newData = this.arrayholder.filter(item => {
-      const itemData = `${item.level.toUpperCase()}   
-      ${item.adress.toUpperCase()} ${item.dateH.toUpperCase()}`;
-
-      const textData = text.toUpperCase();
-
-      return itemData.indexOf(textData) > -1;
+      console.log(events);
+      this.arrayholder = res.data;
     });
-
-    this.setState({ data: newData });
-  };
+  }
 
   renderSeparator = () => {
     return (
       <View
         style={{
           height: 1,
-          width: "100%",
+          width: "86%",
           backgroundColor: "#CED0CE",
           marginLeft: "14%"
         }}
@@ -175,10 +47,22 @@ export default class SearchScreen extends Component {
     );
   };
 
+  searchFilterFunction = text => {
+    console.log(this.arrayholder);
+    const newData = this.arrayholder.filter(item => {
+      const itemData = `${item.adress.toUpperCase()} ${item.when.toUpperCase()}`;
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      events: newData
+    });
+  };
+
   renderHeader = () => {
     return (
       <SearchBar
-        placeholder="Search"
+        placeholder="Type Here..."
         lightTheme
         round
         onChangeText={text => this.searchFilterFunction(text)}
@@ -188,25 +72,32 @@ export default class SearchScreen extends Component {
   };
 
   render() {
+    if (this.state.loading) {
+      return (
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <ActivityIndicator />
+        </View>
+      );
+    }
     return (
-      <List
-        containerStyle={{
-          borderTopWidth: 0,
-          borderBottomWidth: 0
-        }}
-      >
+      <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
         <FlatList
-          data={this.state.data}
-          renderItem={({ item }) => (
+          data={this.state.events}
+          renderItem={({ item }, key) => (
             <ListItem
               roundAvatar
-              title={`${item.adress}, when: ${item.dateH}`}
-              subtitle={`diffculty: ${item.level}, missing: ${item.missing}`}
+              title={`adress: ${item.adress} when: ${item.when}`}
+              subtitle={` difficulty: ${item.difficulty} missing: ${
+                item.missing
+              }`}
               avatar={av}
               containerStyle={{ borderBottomWidth: 0 }}
+              key={key}
             />
           )}
-          keyExtractor={item => item.level}
+          keyExtractor={item => item.id}
           ItemSeparatorComponent={this.renderSeparator}
           ListHeaderComponent={this.renderHeader}
         />
