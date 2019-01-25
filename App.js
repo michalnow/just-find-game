@@ -5,6 +5,7 @@ import React from "react";
 import RegistrationScreen from "./src/screens/RegistrationScreen";
 import EventScreen from "./src/screens/EventScreen";
 import YourMatchesScreen from "./src/screens/YourMatchesScreen";
+import AddEvent from "./src/screens/AddEvent";
 
 export default class App extends React.Component {
   render() {
@@ -33,6 +34,12 @@ const AppStackNavigator = createStackNavigator(
     },
     Event: {
       screen: EventScreen,
+      navigationOptions: {
+        header: null
+      }
+    },
+    Add: {
+      screen: AddEvent,
       navigationOptions: {
         header: null
       }
