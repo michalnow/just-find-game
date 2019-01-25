@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  ActivityIndicator,
-  StyleSheet
-} from "react-native";
+import { View, FlatList, ActivityIndicator, StyleSheet } from "react-native";
 import { List, ListItem, SearchBar } from "react-native-elements";
 import av from "../images/av.jpg";
 import axios from "axios";
@@ -88,10 +82,10 @@ export default class SearchScreen extends Component {
           renderItem={({ item }, key) => (
             <ListItem
               roundAvatar
-              title={`adress: ${item.adress} when: ${item.when}`}
-              subtitle={` difficulty: ${item.difficulty} missing: ${
-                item.missing
-              }`}
+              title={`${item.address} date: ${item.date} `}
+              subtitle={`time: ${item.hour} difficulty: ${
+                item.difficulty
+              } missing: ${item.missing}`}
               avatar={av}
               containerStyle={{ borderBottomWidth: 0 }}
               key={key}
